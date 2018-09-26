@@ -10,3 +10,15 @@ class Location(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Category(models.Model):
+    """
+    Class that contains the category details of the image posted
+    """
+    name = models.CharField(max_length = 15)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.name
+
