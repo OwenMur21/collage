@@ -28,7 +28,13 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-    
+    def save_cat(self):
+        self.save()
+
+    def del_cat(self):
+        self.delete()
+
+
 
 class Image(models.Model):
     """
