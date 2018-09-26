@@ -1,6 +1,44 @@
 from django.test import TestCase
 from .models import Location, Category, Image
 
+class LocationTestClass(TestCase):
+    """
+    Tests Location class and its functions
+    """
+    #Set up method
+    def setUp(self):
+        self.locale = Location(name='here', description='testing pic')
+    #Testing instance
+    def test_instance(self):
+        self.assertTrue(isinstance(self.locale, Location))
+    
+    def test_save_method(self):
+        """
+        Function to test that location is being saved
+        """
+        self.locale.save_location()
+        locations = Location.objects.all()
+        self.assertTrue(len(locations) > 0)
+
+    def test_delete_method(self):
+        """
+        Function to test that a location can be deleted
+        """
+        self.locale.save_location()
+        self.locale.del_location()
+    
+    def test_update_method(self):
+        """
+        Function to test that a location's details can be updates
+        """
+        self.locale.save_location()
+        new_place = Location.objects.filter(name='here').update(name='hapa')
+        locations = Location.objects.get(name='hapa')
+        self.assertTrue(locations.name, 'hapa')
+
+
+
+
 
 class ImageTestClass(TestCase):
     """
@@ -8,7 +46,7 @@ class ImageTestClass(TestCase):
     """
     #Set up method
     def setUp(self):
-        self.image = Image(photo='test.jpg', name='testing pic', description='test times at testcase')
+        self.image = Image(photo='test.jpg', name='testing pic', description='test times at testcase', location='here', category='tests')
 
     #Testing instance
     def test_instance(self):
@@ -21,3 +59,5 @@ class ImageTestClass(TestCase):
         self.image.save_image()
         images = Image.objects.all()
         self.assertTrue(len(images) > 0 )
+
+
