@@ -36,7 +36,40 @@ class LocationTestClass(TestCase):
         locations = Location.objects.get(name='hapa')
         self.assertTrue(locations.name, 'hapa')
 
+class CategoryTestClass(TestCase):
+    """
+    Tests category class and its functions
+    """
+    #Set up method
+    def setUp(self):
+        self.cat = Category(name='this', description='testing pic')
+    #Testing instance
+    def test_instance(self):
+        self.assertTrue(isinstance(self.cat, Category))
+    
+    def test_save_method(self):
+        """
+        Function to test that category is being saved
+        """
+        self.cat.save_cat()
+        categories = Category.objects.all()
+        self.assertTrue(len(categories) > 0)
 
+    def test_delete_method(self):
+        """
+        Function to test that a category can be deleted
+        """
+        self.cat.save_cat()
+        self.cat.del_cat()
+    
+    def test_update_method(self):
+        """
+        Function to test that a category's details can be updates
+        """
+        self.cat.save_cat()
+        new_cat = Category.objects.filter(name='this').update(name='hii')
+        categories = Category.objects.get(name='hii')
+        self.assertTrue(categories.name, 'hii')
 
 
 
