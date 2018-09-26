@@ -22,3 +22,19 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+class Image(models.Model):
+    """
+    Class that contains details concerning the image itself
+    """
+    photo = models.ImageField(upload_to = 'images/')
+    name = models.CharField(max_length = 25)
+    description = models.TextField()
+    location = models.ForeignKey(Location)
+    Category = models.ForeignKey(Category)
+    # up_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+
+
