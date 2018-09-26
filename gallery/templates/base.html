@@ -1,4 +1,4 @@
-{%load bootstrap3%}
+{%load bootstrap3 %}
 <!DOCTYPE html>
 <html>
 
@@ -10,11 +10,14 @@
     <title> Ozzy Collage </title>
     {% endif %}
     {% block styles%}
-
+    <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet"> 
+  {% bootstrap_css %}
     {% endblock %}
 </head>
 
 <body>
+  {% include "navbar.html" %}
+
     {% block content %}
 
     {% endblock %}
