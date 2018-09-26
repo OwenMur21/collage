@@ -1,1 +1,4 @@
 virtual/
+.vscode/
+collage/__pycache__/
+gallery/migrations/
