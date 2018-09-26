@@ -11,6 +11,12 @@ class Location(models.Model):
     def __str__(self):
         return self.name
 
+    def save_location(self):
+        self.save()
+
+    def del_location(self):
+        self.delete()
+
 
 class Category(models.Model):
     """
@@ -22,6 +28,8 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    
+
 class Image(models.Model):
     """
     Class that contains details concerning the image itself
@@ -30,11 +38,12 @@ class Image(models.Model):
     name = models.CharField(max_length = 25)
     description = models.TextField()
     location = models.ForeignKey(Location)
-    Category = models.ForeignKey(Category)
+    category = models.ForeignKey(Category)
     # up_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.name
 
-
+    def save_image(self):
+        self.save()
 
