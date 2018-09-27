@@ -71,4 +71,9 @@ class Image(models.Model):
         image = Image.objects.filter(location_id=id).all()
         return image
 
+    @classmethod
+    def get_images(cls):
+        images = Image.query.all()
+        return images
+
         
