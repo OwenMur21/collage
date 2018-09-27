@@ -16,7 +16,7 @@ class Location(models.Model):
 
     def del_location(self):
         self.delete()
-
+    
 
 class Category(models.Model):
     """
@@ -53,3 +53,22 @@ class Image(models.Model):
     def save_image(self):
         self.save()
 
+    def delete_image(self):
+        self.save()
+
+    # @classmethod
+    # def get_image_by_id(cls, id):
+    #     image = Image.objects.get(id=id)
+    #     return image
+
+    @classmethod
+    def get_image_by_id(cls, id):
+        image = Image.objects.get(id=id)
+        return image
+
+    @classmethod
+    def filter_by_location(cls, id):
+        image = Image.objects.filter(location_id=id).all()
+        return image
+
+        

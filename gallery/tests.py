@@ -79,18 +79,20 @@ class ImageTestClass(TestCase):
     """
     #Set up method
     def setUp(self):
-        self.image = Image(photo='test.jpg', name='testing pic', description='test times at testcase', location='here', category='tests')
+        #creating a new location and saving it
+        self.locale= Location(name='hapa', description='testing')
+        self.locale.save_location()
 
-    #Testing instance
+        #creating a new category and saving it
+        self.cat = Category(name='this', description='testing1')
+        self.cat.save_cat()
+
+        self.image = Image(photo='test.jpg', name='name', description = 'this photo', location=self.locale, category = self.cat)
+
     def test_instance(self):
         self.assertTrue(isinstance(self.image, Image))
 
-    def test_save_method(self):
-        """
-        Test for saving uploaded images
-        """
-        self.image.save_image()
-        images = Image.objects.all()
-        self.assertTrue(len(images) > 0 )
+
+        
 
 
