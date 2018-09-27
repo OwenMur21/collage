@@ -135,3 +135,11 @@ class ImageTestClass(TestCase):
         image = Image.objects.filter(location=self.image.location_id)
         self.assertTrue(this_img, image)
 
+    def test_filter_by_category_name(self):
+        """
+        Function to test if you can get an image by its category name
+        """
+        self.image.save_image()
+        images = Image.search_image('this')
+        self.assertTrue(len(images)>0)
+
