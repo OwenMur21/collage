@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+
+
+{% block content %}
+
+<h1> My Gallery</h1>
+
+
+  {% for image in images %}
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      <p>{{image.name}}</p>
+      <img src="{{image.photo.url}}" class="img-responsive" >
+    </div>
+  </div>
+  {% empty %}
+  <div class="row">
+    <h2 class="text-center">There No Images yet</h2>
+  </div>
+  {% endfor %}
+
+
+
+{% endblock%}
