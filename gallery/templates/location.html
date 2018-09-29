@@ -1,23 +1,29 @@
 {%extends 'base.html'%}
-
-
+{% load static%}
+{% block styles%}
+{{block.super}}
+<link href="https://fonts.googleapis.com/css?family=Concert+One|Fugaz+One" rel="stylesheet"> 
+<link rel="stylesheet" href="{% static 'css/location.css' %}">
+{% endblock %}
 {% block content %}
+<br>
+<br>
+<div class="container">
+ <div class="row">
 
-<h1> My Gallery</h1>
+  {% if images %}
+    {% for image in images %}
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+         <center>
+          <h1>{{image.name}}</h1>
+           <img src="{{image.photo.url}}" class="img-responsive">
+           <hr>
+           <p>{{image.description}}</p>
+           </center>
 
-
-  {% for image in images %}
-<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-      <p>{{image.name}}</p>
-      <img src="{{image.photo.url}}" class="img-responsive" >
-    </div>
+      </div>
+    {% endfor %}
+  {% endif %}
   </div>
-  {% empty %}
-  <div class="row">
-    <h2 class="text-center">There No Images yet</h2>
   </div>
-  {% endfor %}
-
-
-
 {% endblock%}
