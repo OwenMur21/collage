@@ -3,3 +3,4 @@ virtual/
 collage/__pycache__/
 gallery/migrations/
 gallery/__pycache__/
+.env
