@@ -32,3 +32,4 @@ def filter_by_location(request,location_id):
     images = Image.filter_by_location(id= location_id)
     return render (request, 'location.html', {"images":images})
 
+7
