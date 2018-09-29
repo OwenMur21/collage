@@ -81,6 +81,6 @@ class Image(models.Model):
         images = cls.objects.filter(category__name__icontains=category)
         return images
 
-
+    
 
         
